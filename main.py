@@ -1,10 +1,10 @@
 from scaling import scale_image
-import cv2
 import matplotlib.pyplot as plt
 from kmeans import kmeans
+from load_image import load_image_rgb
 
 IMG_URL = "qaioz.jpg"
-image = cv2.imread(IMG_URL)
+image = load_image_rgb(IMG_URL)
 
 scaled_down_image = scale_image(image, 50)
 scaled_up_image = scale_image(image, 120)
@@ -20,7 +20,7 @@ IMAGES = [
 ]
 
 for i, img in enumerate(IMAGES):
-    axes[i // 3, i % 3].imshow(cv2.cvtColor(img["image"], cv2.COLOR_BGR2RGB))
+    axes[i // 3, i % 3].imshow(img["image"])
     axes[i // 3, i % 3].set_title(img["title"])
     axes[i // 3, i % 3].axis("off")
 
